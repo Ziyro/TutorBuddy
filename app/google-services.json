@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1011586644477",
+    "project_id": "fir-1ff6f",
+    "storage_bucket": "fir-1ff6f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1011586644477:android:beaa9f0a405ea90a7a8194",
+        "android_client_info": {
+          "package_name": "com.safe.tutorbuddy"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1011586644477-f945kun807cqnpjnbgiajh7h39vtbepa.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCJDpMah6_TKkxk0dGCGwOfXRkvUCwYGDw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1011586644477-f945kun807cqnpjnbgiajh7h39vtbepa.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
