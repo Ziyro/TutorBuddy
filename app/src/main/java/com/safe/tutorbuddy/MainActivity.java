@@ -1,6 +1,7 @@
 package com.safe.tutorbuddy;
 
 import android.os.Bundle;
+import android.util.Log;
 //import android.support.v7.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -46,8 +47,8 @@ public class MainActivity extends AppCompatActivity {
                 // fetch name, contact, location, subject and store it in arraylist
                 tutorNames.add(tutorDetails.getString("name"));
                 contacts.add(tutorDetails.getString("contact"));
-                location.add(tutorDetails.getString("mobile"));
                 subjects.add(tutorDetails.getString("subject"));
+                Log.d("tutorbuddy", tutorDetails.getString("name"));
             }
         } catch (JSONException e) {
             e.printStackTrace();

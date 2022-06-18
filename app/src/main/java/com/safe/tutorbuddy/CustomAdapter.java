@@ -44,7 +44,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
     //this will set the data to the UI
     @Override
     public void onBindViewHolder(MyViewHolder holder, @SuppressLint("RecyclerView") final int position) {
-        // set the texxt to the cards/rows on the view
+        // set the text to the cards/rows on the view
         holder.name.setText(tutorNames.get(position));
         holder.contact.setText(contacts.get(position));
         holder.location.setText(location.get(position));
