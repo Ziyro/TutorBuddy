@@ -24,8 +24,7 @@ public class RegisterActivity extends AppCompatActivity {
     // Constants
     public static final String DISPLAY_NAME_KEY = "username";
 
-    // TODO: Add member variables here:
-    // UI references.
+    // UI references. member variables
     private AutoCompleteTextView mEmailView;
     private AutoCompleteTextView mUsernameView;
     private EditText mPasswordView;
@@ -98,7 +97,7 @@ public class RegisterActivity extends AppCompatActivity {
             // form field with an error.
             focusView.requestFocus();
         } else {
-            // TODO: Call create FirebaseUser() here
+            // create Firebase user
             createFirebaseUser();
         }
     }
@@ -108,14 +107,13 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     private boolean isPasswordValid(String password) {
-        //TODO: Add own logic to check for a valid password (minimum 6 characters)
+        //logic to check for a valid password (minimum 6 characters)
         String confirmPassword = mConfirmPasswordView.getText().toString();
         //only return true if its the same as entry lenghth and lenghth is greater than 6 characters
         return confirmPassword.equals(password) &&password.length()>6;
     }
 
-    // TODO: Create a Firebase user
-
+    // Create a Firebase user
     private  void createFirebaseUser(){
         String email =mEmailView.getText().toString();
         String password = mPasswordView.getText().toString();
@@ -130,12 +128,5 @@ public class RegisterActivity extends AppCompatActivity {
                     }
                 });
     }
-    // TODO: Save the display name to Shared Preferences
-
-
-    // TODO: Create an alert dialog to show in case registration failed
-
-
-
 
 }

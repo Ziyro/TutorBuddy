@@ -1,17 +1,25 @@
 package com.safe.tutorbuddy;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 //import android.support.v7.app.AppCompatActivity;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
-
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 
 
 public class LoginActivity extends AppCompatActivity {
@@ -20,6 +28,7 @@ public class LoginActivity extends AppCompatActivity {
     // UI references.
     private AutoCompleteTextView mEmailView;
     private EditText mPasswordView;
+    private FirebaseAuth mAuth;//this variable to authenticate the user
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,14 +48,15 @@ public class LoginActivity extends AppCompatActivity {
                 return false;
             }
         });
-
-        // TODO: Grab an instance of FirebaseAuth
+        //  instance of FirebaseAuth
+        mAuth = FirebaseAuth.getInstance();
 
     }
 
     // Executed when Sign in button pressed
     public void signInExistingUser(View v)   {
-        // TODO: Call attemptLogin() here
+        // Call attemptLogin() method to try and log in user
+        attemptLogin();
 
     }
 
@@ -57,18 +67,39 @@ public class LoginActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    // TODO: Complete the attemptLogin() method
+    // method to check credentials, connect to firebase and log in user if correct
     private void attemptLogin() {
+        String email = mEmailView.getText().toString(); //get the email
+        String password = mPasswordView.getText().toString();//get the password
+        if (email.isEmpty()) //check so its not left empty
+            if (email.equals("") || password.equals("")) return; //if empty return
+        Toast.makeText(this, "Login in progress...", Toast.LENGTH_SHORT).show();
+        // FirebaseAuth to sign in with email & password
+        mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                Log.d("firebase", "signInWithEmail() onComplete: " + task.isSuccessful());
+                if (!task.isSuccessful()) {
+                    Log.d("firebase", "Problem signing in: " + task.getException());//exception gives us info why not successful
+                    showErrorDialog("There was a problem signing in");// will add this method next
+                } else {
+                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                    finish();//finish login activity and start the next one
 
-
-        // TODO: Use FirebaseAuth to sign in with email & password
-
-
-
+                    startActivity(intent);
+                }
+            }
+        });
     }
 
-    // TODO: Show error on screen with an alert dialog
-
-
+    // Show error on screen with an alert dialog if login not successful
+        private void showErrorDialog(String message) {
+            new AlertDialog.Builder(this)
+            .setTitle("Oops")
+            .setMessage(message)
+            .setPositiveButton(android.R.string.ok, null)
+            .setIcon(android.R.drawable.ic_dialog_alert)
+            .show();
+        }
 
 }
