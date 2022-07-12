@@ -59,7 +59,6 @@ public class LoginActivity extends AppCompatActivity {
         attemptLogin();
 
     }
-
     // Executed when Register button pressed
     public void registerNewUser(View v) {
         Intent intent = new Intent(this, com.safe.tutorbuddy.RegisterActivity.class);
