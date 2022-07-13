@@ -70,8 +70,12 @@ public class LoginActivity extends AppCompatActivity {
     private void attemptLogin() {
         String email = mEmailView.getText().toString(); //get the email
         String password = mPasswordView.getText().toString();//get the password
-        if (email.isEmpty()) //check so its not left empty
-            if (email.equals("") || password.equals("")) return; //if empty return
+        if (email.isEmpty() || password.isEmpty()) //check so its not left empty
+            if (email.equals("") || password.equals("")) {//give an alert to user
+                Toast.makeText(this, "Please enter both email and password", Toast.LENGTH_SHORT).show();
+                showErrorDialog("Please enter both email and password");
+                return;
+            }
         Toast.makeText(this, "Login in progress...", Toast.LENGTH_SHORT).show();
         // FirebaseAuth to sign in with email & password
         mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -80,10 +84,10 @@ public class LoginActivity extends AppCompatActivity {
                 Log.d("firebase", "signInWithEmail() onComplete: " + task.isSuccessful());
                 if (!task.isSuccessful()) {
                     Log.d("firebase", "Problem signing in: " + task.getException());//exception gives us info why not successful
-                    showErrorDialog("There was a problem signing in");// will add this method next
+                    showErrorDialog("There was a problem signing in");// letting user know about erro in signing in
                 } else {
                     Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                    finish();//finish login activity and start the next one
+                    finish();//finish login activity and start the next one if log in successful
 
                     startActivity(intent);
                 }
