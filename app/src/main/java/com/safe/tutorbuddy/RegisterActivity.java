@@ -1,5 +1,6 @@
 package com.safe.tutorbuddy;
 
+import android.app.AlertDialog;
 import android.os.Bundle;
 //import android.support.v7.app.AppCompatActivity;
 import androidx.annotation.NonNull;
@@ -122,11 +123,22 @@ public class RegisterActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         Log.d("tutorbuddy", "createUser onComplete; " + task.isSuccessful());
+                        showDialog("Registration successful");
                         if (!task.isSuccessful()){
                             Log.d("tutorbuddy", "user creation failed");
+                            showDialog("There was a problem with registration");
                         }
                     }
                 });
+    }
+    // Show dialoue to let user know if registration is successful
+    private void showDialog(String message) {
+        new AlertDialog.Builder(this)
+                .setTitle("Registration Status")
+                .setMessage(message)
+                .setPositiveButton(android.R.string.ok, null)
+                .setIcon(android.R.drawable.ic_dialog_alert)
+                .show();
     }
 
 }
