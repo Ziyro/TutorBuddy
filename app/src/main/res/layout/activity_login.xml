@@ -26,8 +26,8 @@
         android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:paddingBottom="80dp"
         android:text="@string/app_name"
-        android:paddingBottom="100dp"
         android:textColor="@color/yellow"
         android:textColorHighlight="@color/light_green"
         android:textColorLink="@color/light_green"
@@ -96,6 +96,22 @@
         android:onClick="registerNewUser"
         android:text="@string/action_register"
         android:textColor="@color/green"
+        android:textColorHighlight="#FFEB3B"
+        android:textColorLink="#FFEB3B"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/login_kamar_button"
+        style="?android:textAppearanceMedium"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="26dp"
+        android:layout_marginBottom="26dp"
+        android:background="@color/yellow"
+        android:onClick="mrgsPortal"
+        android:paddingBottom="20dp"
+        android:text="@string/kamar_login"
+        android:textColor="#08103A"
         android:textColorHighlight="#FFEB3B"
         android:textColorLink="#FFEB3B"
         android:textStyle="bold" />

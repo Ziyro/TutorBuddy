@@ -37,6 +37,10 @@
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden|adjustResize">
         </activity>
+        <activity
+            android:name="com.safe.tutorbuddy.MRGS_KAMAR"
+            android:screenOrientation="portrait">
+        </activity>
 
     </application>
 

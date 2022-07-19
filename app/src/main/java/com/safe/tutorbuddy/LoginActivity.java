@@ -66,6 +66,13 @@ public class LoginActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    // Executed when KAMAR button pressed
+    public void mrgsPortal(View v) {
+        Intent intent = new Intent(this, com.safe.tutorbuddy.MRGS_KAMAR.class);
+        finish();
+        startActivity(intent);
+    }
+
     // method to check credentials, connect to firebase and log in user if correct
     private void attemptLogin() {
         String email = mEmailView.getText().toString(); //get the email
